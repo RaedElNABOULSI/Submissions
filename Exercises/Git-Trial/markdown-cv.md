@@ -12,7 +12,7 @@
 
 ## SKILLS
 
--
+-DIGITAL ANALYSIS
 
 -TEAMWORK      
   
