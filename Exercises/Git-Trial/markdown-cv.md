@@ -1,5 +1,7 @@
 # RAED EL NABOULSI
 
+![Image] (https://github.com/RaedElNABOULSI/Submissions/blob/master/Exercises/Git-Trial/hard-work-1.jpg "My pic")
+
 ## EDUCATION:
 
 2013-2018: BE IN TELECOM ENGINEERING
