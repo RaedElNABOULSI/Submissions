@@ -1,6 +1,6 @@
 # RAED EL NABOULSI
 
-![Image] (https://github.com/RaedElNABOULSI/Submissions/blob/master/Exercises/Git-Trial/hard-work-1.jpg "My pic")
+![Image] (https://github.com/RaedElNABOULSI/Submissions/blob/master/Exercises/Git-Trial/hard-work-1.jpg)
 
 ## EDUCATION:
 
