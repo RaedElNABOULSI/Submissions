@@ -1,0 +1,18 @@
+li{
+    display:inline;
+}
+h1{
+    text-align: center;
+}
+.menubar
+{
+    background-color: powderblue;
+    float:right;
+}
+button
+{
+    display:block;
+    width:150px;
+    margin:0 auto;
+    font-size: 15px;
+}
