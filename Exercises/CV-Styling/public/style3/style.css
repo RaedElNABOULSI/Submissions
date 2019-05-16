@@ -1,0 +1,224 @@
+
+#\#wrapper
+{background-color:#5CE1A1;
+    position: relative;
+}
+header{
+    background-color:#5CE1A1;
+}
+hgroup{
+    color:red;
+    padding-left: 160px;
+padding-top: 20px;
+padding-bottom: 10px;
+}
+
+/*image*/
+img{
+    visibility: hidden;
+}
+figure{
+    background-image: url('../images/raedpic.jpg');
+    
+    background-position:top;
+height: 110px;
+   width: 110px;
+    left: 400px;
+    position: absolute;
+    top: 40px;
+}
+
+/*position contacts*/
+
+.contacts
+{
+    
+    position: absolute;
+   
+    right: 50px;
+    top: 5px;
+    width:350px;
+}
+
+.contact-type
+{
+    
+   
+    color: white;
+  
+}
+.contact-value{ 
+  
+  
+   
+    
+}
+a{
+    text-decoration: none;
+  
+}
+
+/*align contact facing each other*/
+
+dl{
+    display: flex;
+    flex-wrap: wrap;
+        flex-direction: column;
+    height: 10px;
+    margin: 9px;
+    
+}
+
+/*position content*/
+
+.content
+{margin-left: 150px;
+   display: flex;
+   flex-wrap: wrap;
+   margin-top: 80px;
+}
+#about{
+width: 40%;
+}
+#competencies{
+width:40%;
+margin-left: 50px;
+}
+#experiences
+{width:40%;
+
+}
+#education{
+    width:40%;
+    margin-left: 50px;
+}
+#hobbies{
+    width:40%;
+   
+}
+h4{
+    color: red;
+}
+h3::before{
+    content: '•';
+    color: red;
+  font-size: 40px;
+
+}
+dd{
+    width: 450px;
+    margin-left: 0px;
+}
+dt{
+    width: 150px;
+}
+
+
+/*skillbar*/
+
+
+
+.skill[data-skill = "1"]::before { 
+    width: 10%;
+content: '';
+height: 20px;
+display: inline-block;
+margin: 3px 3px 0 0;
+    background-color: red;
+}
+
+.skill[data-skill = "3"]::before { 
+    width: 30%;
+content: '';
+height: 20px;
+display: inline-block;
+margin: 3px 3px 0 0;
+    background-color: red;
+}
+
+.skill[data-skill = "5"]::before { 
+    width: 50%;
+content: '';
+height: 20px;
+display: inline-block;
+margin: 3px 3px 0 0;
+    background-color: red;
+}
+
+.skill[data-skill = "9"]::before { 
+    width: 90%;
+content: '';
+height: 20px;
+display: inline-block;
+margin: 3px 3px 0 0;
+    background-color: red;
+}
+
+.skill[data-skill = "7"]::before { 
+    width: 70%;
+content: '';
+height: 20px;
+display: inline-block;
+margin: 3px 3px 0 0   ;
+    background-color: red;
+}
+.skills-secondary 
+{
+    margin-top: 20px;
+}
+.skill span{
+    color: white;
+    position: absolute;
+    top: 2px;
+    left: 0;
+}
+
+.skill {
+    background-color:#CCCCCC;
+    border:2px solid white;
+position: relative;
+}
+.skill span{
+    color: white;
+
+}
+.skills-primary::before{
+    content: 'Main';
+
+}
+.skills-secondary::before{
+    content: 'Other';
+    
+}
+/*position skills*/
+
+.skills-primary{
+    display: flex;
+    flex-direction: column;
+   
+}
+h3{
+    border-bottom: solid 1px #CCCCCC;
+}
+#contact h3{
+    visibility: hidden;
+}
+
+/*mobile*/
+
+@media(max-width:768px)
+{
+    #about,#competencies,#experiences,#education,#hobbies
+{
+    width:100%;
+    margin-left: 0px;
+}
+
+/*hide contacts*/
+
+.contacts
+{
+    visibility: hidden;
+}
+
+}
