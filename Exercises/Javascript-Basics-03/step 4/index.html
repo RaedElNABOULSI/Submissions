@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script type="text/javascript">
+  function myfunction()
+  {
+var pass1=document.getElementById("password").value;
+var pass2=document.getElementById("confirmation").value;
+if(pass1!==pass2)
+{
+  document.getElementById("password").style.border="solid 3px red"
+  document.getElementById("confirmation").style.border="solid 3px red"
+}
+  }
+
+  </script>
   <meta charset="utf-8">
   <title>Step 4</title>
 </head>
@@ -8,7 +21,7 @@
   <form>
     <label for="password">password : </label><input type="text" name="password" value="" id="password" />
     <label for="confirmation">Confirm : </label><input type="text" name="confirmation" value="" id="confirmation" />
-    <button type="button" name="button" >Test</button>
+    <button type="button" name="button" onclick="javascript:myfunction()">Test</button>
   </form>
 </body>
 </html>
