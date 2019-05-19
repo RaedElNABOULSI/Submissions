@@ -2,10 +2,14 @@
 <html>
     <head>
             <script type="text/javascript">
-            var a=parseInt(prompt("Enter 1st number"))
-            var b=parseInt(prompt("Enter 2nd number"))
-            var r=a*b
+           
+           
+            function myfunction()
+            { var a=parseInt(document.getElementById("first_number").value)
+            var b=parseInt(document.getElementById("second_number").value)
+                 var r=a*b
             alert("Result is: " + r)
+            }
             </script>
         <title>Step 5</title>
         <meta charset="UTF-8">
@@ -14,7 +18,7 @@
         <form>
             <label for="first_number">first number : </label><input type="text" id="first_number" name="first_number"/><br/>
             <label for="second_number">second number : </label><input type="text" id="second_number" name="second_number"/><br/>
-            <button  id="validate" name ="validate">validate</button>
+            <button  id="validate" name ="validate" onclick="myfunction()">validate</button>
         </form>
     </body>
 </html>
