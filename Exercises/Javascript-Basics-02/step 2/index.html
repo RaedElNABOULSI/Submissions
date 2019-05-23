@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script type="text/javascript">
- 
-  function dialog()
-{
-  alert("thank you for participating!")
-}
-  </script>
+
   <meta charset="utf-8">
   <title>Step 2</title>
 </head>
 <body>
   <form>
-    <label for="name">Your name  : </label><input type="text" name="name" value="" id="name" onblur="dialog()"/>
+    <label for="name">Your name  : </label><input type="text" name="name" value="" id="name"/>
   </form>
+  <script type="text/javascript">
+ 
+    document.getElementById("name").addEventListener("blur", myFunction);
+    
+    function myFunction() {
+      alert("thank you for participating!");
+    }
+    
+      </script>
 </body>
 </html>
