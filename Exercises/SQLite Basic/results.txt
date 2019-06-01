@@ -1,0 +1,10 @@
+Basic queries:
+1-Select name from students
+2-SELECT * from students where Age>30
+3- SELECT * from students
+ WHERE Age=30 AND Gender='F'
+4-select Points from students where name='Alex'
+5-INSERT into students(ID,name,AGE,Gender,Points) VALUES(7,'Raed',23,'M',250)
+6-UPDATE students SET Points=350 WHERE id=2
+7-UPDATE students SET Points=150 WHERE id=1
+8-
