@@ -34,6 +34,29 @@ where companies.Date<2000
 13- SELECT Company from employees
 where Role='Graphic Designer'
 
+Count & filter:
+
+14- select name,max(points)
+from students 
+
+15- select avg(points)
+as Average
+from students 
+
+16-select count(Points)
+as numberofstudents
+from students
+where points=500
+
+17- select name
+as namescontains_s
+from students
+where name like '%s%'
+
+18-select name,points
+as decreasing_order_pts
+from students
+ORDER by points DESC
 
 
 
