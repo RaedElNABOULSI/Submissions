@@ -1,16 +1,14 @@
 {
-  "name": "react-youtube-interface",
-  "version": "1.0.0",
-  "description": "",
-  "keywords": [],
-  "main": "src/index.js",
+  "name": "my-youtube",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
     "@material-ui/core": "3.0.2",
     "@material-ui/icons": "3.0.1",
     "axios": "0.18.0",
-    "react": "16.4.2",
-    "react-dom": "16.4.2",
-    "react-scripts": "1.1.4"
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "0.9.5"
   },
   "devDependencies": {},
   "scripts": {

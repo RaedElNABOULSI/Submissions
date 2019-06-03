@@ -36,8 +36,9 @@ where Role='Graphic Designer'
 
 Count & filter:
 
-14- select name,max(points)
+14- select name,points
 from students 
+where Points=(select max(points) from students) 
 
 15- select avg(points)
 as Average

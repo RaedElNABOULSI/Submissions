@@ -5,8 +5,13 @@
 
 
 function change(){
-    var x=document.getElementById("name").value
-    document.getElementById("div").innerHTML=x;
+  var x=document.getElementById("name").value
+    
+  var div = document.createElement("div");
+div.style.width ="100 px";
+div.style.height = "100 px";
+div.style.background = "red";
+div.innerHTML = x;
 }
 
   </script>
@@ -18,8 +23,6 @@ function change(){
     <label for="name">Your name  : </label><input type="text" name="name" value="" id="name"/>
   </form>
   <button onclick="change()">submit</button>
-  <div id="div">
-
-  </div>
+  
 </body>
 </html>

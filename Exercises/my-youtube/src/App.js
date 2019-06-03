@@ -13,6 +13,14 @@ import LinearProgress from "@material-ui/core/CircularProgress";
 import axios from "axios";
 import * as constants from "./api/constants.js";
 
+import SearchBar from "./components/SearchBar";
+import VideoDetail from "./components/VideoDetail";
+import VideoItem from "./components/VideoItem";
+import VideoList from "./components/VideoList";
+     
+
+
+
 const styles = theme => ({
   root: {
     display: "flex",
@@ -80,7 +88,7 @@ class App extends React.Component {
   };
 
   fetchRepos = () => {
-    fetch(`AIzaSyDKrwXjzteN1vCf8yvr9ThMAST9szRX3LQ/${this.state.userName}/repos`)
+    fetch(`https://api.github.com/users/${this.state.userName}/repos`)
       .then(response => response.json())
       .then(data => {
         if (Array.isArray(data)) {
@@ -138,4 +146,13 @@ App.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
+
+
+
+
+
+
+
+
 export default withStyles(styles)(App);
+
