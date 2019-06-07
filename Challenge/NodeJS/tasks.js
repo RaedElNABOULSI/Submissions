@@ -40,6 +40,10 @@ function onDataReceived(text) {
   else if(text === 'hello\n'){
     hello();
   }
+  else if (text==='help\n')
+  {
+console.log("All possible commands: \n - quit/exit\n - hello" )
+  }
   else{
     unknownCommand(text);
   }
