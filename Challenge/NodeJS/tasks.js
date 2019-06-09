@@ -69,6 +69,10 @@ when typing 'help', all possible commands are listed
   {
 console.log("All possible commands: \n - quit/exit\n - hello\n -hello+x" )
   }
+  else if(text==='list\n')
+  {
+    console.log("Tasks:\n1.Task1\n2.Task2")
+  }
   else{
     unknownCommand(text);
   }
