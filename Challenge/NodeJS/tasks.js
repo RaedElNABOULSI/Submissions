@@ -51,7 +51,7 @@ function startApp(name){
  * @returns {void}
  */
 
-tasks=['task1','task2']
+tasks=['task1','task2','task3','task4']
 function onDataReceived(text) {
  
   if (text === 'quit\n' || text==="exit\n") {
@@ -89,6 +89,27 @@ console.log("error")
       console.log('Task ' + (i + 1) + ' of ' + tasks.length + ": " +tasks[i]); 
     }
   }
+  else if (text==='remove\n')
+  {
+    tasks.pop()
+    /*remove last element of tasks
+  */
+  }
+
+  else if(text=='remove 1\n')
+  {
+tasks.shift()
+/*remove first element of tasks
+  */
+  }
+
+  else if(text=='remove 2\n')
+  {
+tasks.splice(1,1)
+/*remove 2nd element of tasks
+  */
+  }
+
   else{
     unknownCommand(text);
   }
