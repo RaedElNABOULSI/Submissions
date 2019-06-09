@@ -51,9 +51,13 @@ function startApp(name){
  * @returns {void}
  */
 
+
+  
 tasks=['task1','task2','task3','task4']
 function onDataReceived(text) {
- 
+
+  var words=text.split(" ")
+
   if (text === 'quit\n' || text==="exit\n") {
     quit()
   }
@@ -96,25 +100,31 @@ console.log("error")
   */
   }
 
-  else if(text=='remove 1\n')
+  else if(text=='remove 1\n' && words[1]<=tasks.length && words[1]>0)
   {
 tasks.shift()
 /*remove first element of tasks
   */
   }
 
-  else if(text=='remove 2\n')
+  else if(text=='remove 2\n' && words[1]<=tasks.length && words[1]>0)
   {
 tasks.splice(1,1)
 /*remove 2nd element of tasks
   */
   }
 
+ 
+else if(words[1]>tasks.length || words[1]<1)
+{
+
+console.log("number doesn't exist")
+
+}
   else{
     unknownCommand(text);
   }
 }
-
 
 /**
  * prints "unknown command"
