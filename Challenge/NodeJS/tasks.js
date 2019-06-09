@@ -121,6 +121,22 @@ else if(words[1]>tasks.length || words[1]<1)
 console.log("number doesn't exist")
 
 }
+
+else if(text==='edit\n')
+{
+  console.log("error")
+}
+
+else if(text==='edit new text\n')
+{
+  tasks[tasks.length-1]="new text"
+}
+
+else if(text==='edit 1 new text\n')
+{
+  tasks[0]="new text"
+}
+
   else{
     unknownCommand(text);
   }
