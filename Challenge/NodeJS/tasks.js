@@ -51,9 +51,9 @@ function startApp(name){
  * @returns {void}
  */
 
-
+tasks=['task1','task2']
 function onDataReceived(text) {
-  console.log("the text is "+ text)
+ 
   if (text === 'quit\n' || text==="exit\n") {
     quit()
   }
@@ -71,7 +71,23 @@ console.log("All possible commands: \n - quit/exit\n - hello\n -hello+x" )
   }
   else if(text==='list\n')
   {
-    console.log("Tasks:\n1.Task1\n2.Task2")
+    for(var i = 0; i < tasks.length; i++){
+      console.log('Task ' + (i + 1) + ' of ' + tasks.length + ": " +tasks[i]); 
+    }
+    
+  }
+  else if(text==='add\n')
+  {
+console.log("error")
+  }
+  else if(text.indexOf("add")==0)
+  {
+    var taskarray=text.trim().split(" ")
+   tasks.push(taskarray[1])
+
+    for(var i = 0; i < tasks.length; i++){
+      console.log('Task ' + (i + 1) + ' of ' + tasks.length + ": " +tasks[i]); 
+    }
   }
   else{
     unknownCommand(text);
