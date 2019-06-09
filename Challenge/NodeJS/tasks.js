@@ -33,13 +33,35 @@ function startApp(name){
  * @param  {string} text data typed by the user
  * @returns {void}
  */
+
+
+/**
+ * Decides what to do depending on the data that was received
+ * This function receives the input sent by the user.
+ * 
+ * For example, if the user entered 
+ * ```
+ * node tasks.js batata
+ * ```
+ * 
+ * The text received would be "batata"
+ * This function  then directs to other functions
+ * 
+ * @param  {string} x data typed by the user
+ * @returns {void}
+ */
+
+
 function onDataReceived(text) {
+  console.log("the text is "+ text)
   if (text === 'quit\n' || text==="exit\n") {
-    quit();
+    quit()
   }
-  else if(text === 'hello\n'){
-    hello();
+  else if(text === 'hello\n' || text.indexOf("hello")==0){
+   
+    hello(text);
   }
+  
   /*
 when typing 'help', all possible commands are listed
   */
@@ -70,8 +92,10 @@ function unknownCommand(c){
  *
  * @returns {void}
  */
-function hello(){
-  console.log('hello!')
+function hello(kk){
+  
+  console.log(`${kk}`.trim().split("|") + "!")
+
 }
 
 
