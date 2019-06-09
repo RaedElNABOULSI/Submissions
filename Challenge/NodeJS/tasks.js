@@ -67,7 +67,7 @@ when typing 'help', all possible commands are listed
   */
   else if (text==='help\n')
   {
-console.log("All possible commands: \n - quit/exit\n - hello\n -hello+x" )
+console.log("All possible commands: \n - quit/exit\n - hello\n - hello+x\n - list\n - add\n - remove" )
   }
   else if(text==='list\n')
   {
