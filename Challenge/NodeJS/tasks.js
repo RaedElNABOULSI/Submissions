@@ -52,6 +52,18 @@ function startApp(name){
  */
 
 
+
+
+ /*writing*/
+ var fs = require("fs");
+ var myJson = {
+  key: "myvalue"
+};
+
+fs.writeFile( "database.json", JSON.stringify( myJson ), "utf8", yourCallback );  
+
+// And then, to read it...
+myJson = require("./database.json");
   
 tasks=['task1','task2','task3','task4']
 
