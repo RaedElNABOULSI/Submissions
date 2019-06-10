@@ -174,13 +174,13 @@ else if(text==='edit\n')
   console.log("error")
 }
 
-else if(text.length>5 && text.indexOf('edit\n')===0 )
+else if(text.trim(" ").length>4 && text.indexOf('edit\n')===0 )
 {
   tasks[tasks.length-1]=text.trim().substring(5,text.length)
 
 }
 
-else if(text.length>5 && text.indexOf('edit')===0 && text.indexOf('1')===5)
+else if(text.trim(" ").length>4 && text.indexOf('edit')===0 && text.indexOf('1')===5)
 {
   tasks[0]=text.trim().substring(7,text.length)
   
