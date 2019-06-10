@@ -54,18 +54,45 @@ function startApp(name){
 
 
 
- /*writing*/
- var fs = require("fs");
- var myJson = {
-  key: "myvalue"
-};
-
-fs.writeFile( "database.json", JSON.stringify( myJson ), "utf8", yourCallback );  
+ 
 
 // And then, to read it...
-myJson = require("./database.json");
+var fs = require("fs");
+
+fs.readFile("database.json", function(err, buf) {
+  console.log(buf.toString());
+});
   
-tasks=['task1','task2','task3','task4']
+
+fs.readFile("database.json", function(err, buf) {
+  console.log(buf);
+});
+
+fs.readFile("database.json", "utf-8", (err, data) => {
+  if (err) { console.log(err) }
+  console.log(data);
+})
+
+
+
+/* process */ 
+process.argv[2]='blah.json'
+
+process.argv.forEach((val, index) => {
+  console.log(`${index}: ${val}`);
+});
+
+tasks=['eat','sleep','code','play']
+
+tasks2={task1:'run',task2:'listen',task3:'music',task4:'sports'}
+tasks3={task1:'walk',task2:'read',task3:'watch',task4:'relax'}
+
+fs.writeFile('blah.json',JSON.stringify(tasks2), function (err) {
+  if (err) throw err;
+  console.log('Saved!');
+}); 
+
+
 
 var task1check={name:'eat',check1:'False'}
 var task2check={name:'sleep',check1:'False'}
@@ -233,6 +260,15 @@ function hello(kk){
  * @returns {void}
  */
 function quit(){
+
+/*writing*/
+
+
+fs.writeFileSync('database.json',JSON.stringify(tasks3), function (err) {
+  if (err) throw err;
+  console.log('Saved!');
+}); 
+
   console.log('Quitting now, goodbye!')
   process.exit();
 }
