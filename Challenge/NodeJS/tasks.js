@@ -79,7 +79,7 @@ when typing 'help', all possible commands are listed
   */
   else if (text==='help\n')
   {
-console.log("All possible commands: \n - quit/exit\n - hello\n - hello+x\n - list\n - add\n - remove" )
+console.log("All possible commands: \n - quit/exit\n - hello\n - hello+x\n - list\n - add\n - remove\n - check 1\n - uncheck (number of task)\n" )
   }
   else if(text==='list\n')
   {
