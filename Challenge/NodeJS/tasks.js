@@ -145,6 +145,9 @@ else if(text==='edit 1 new text\n')
   tasks[0]="new text"
   
 }
+
+/*  check/uncheck commands  */ 
+
 else if (text=="check 1\n")
 {
   taskscheck[0]='[✓]'+task1check.name
@@ -156,6 +159,33 @@ else if(text==='check\n')
 {
   console.log("error")
 }
+
+else if(text==='uncheck\n')
+{
+  console.log("error")
+}
+
+else if(text==='uncheck 1\n')
+{taskscheck[0]='[ ]'+task1check.name
+console.log(taskscheck.join("\n"))
+ 
+}
+else if(text==='uncheck 2\n')
+{
+  taskscheck[1]='[ ]'+task2check.name
+console.log(taskscheck.join("\n"))
+}
+else if(text==='uncheck 3\n')
+{
+  taskscheck[2]='[ ]'+task3check.name
+console.log(taskscheck.join("\n"))
+}
+else if(text==='uncheck 4\n')
+{
+  taskscheck[3]='[ ]'+task3check.name
+console.log(taskscheck.join("\n"))
+}
+
   else{
     unknownCommand(text);
   }
