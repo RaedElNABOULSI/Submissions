@@ -1,5 +1,5 @@
 
-/**
+/**✓
  * Starts the application
  * This is the function that is run when the app starts
  * 
@@ -54,6 +54,14 @@ function startApp(name){
 
   
 tasks=['task1','task2','task3','task4']
+
+var task1check={name:'eat',check1:'False'}
+var task2check={name:'sleep',check1:'False'}
+var task3check={name:'code',check1:'False'}
+var task4check={name:'play',check1:'False'}
+
+taskscheck=['[]'+task1check.name,'[✓]'+task2check.name,'[]'+task3check.name,'[✓]'+task4check.name]
+
 function onDataReceived(text) {
 
   var words=text.split(" ")
@@ -135,8 +143,19 @@ else if(text==='edit new text\n')
 else if(text==='edit 1 new text\n')
 {
   tasks[0]="new text"
+  
 }
+else if (text=="check 1\n")
+{
+  taskscheck[0]='[✓]'+task1check.name
+console.log(taskscheck.join("\n"))
 
+  /* check task 1 */
+}
+else if(text==='check\n')
+{
+  console.log("error")
+}
   else{
     unknownCommand(text);
   }
