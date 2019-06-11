@@ -24,3 +24,22 @@ app.use(function(req, res, next) {
 app.listen(3000, function () {
     console.log('Example app listening on port 3000.');
 });
+
+// express simple API
+app.route('/test')
+.get(function(req, res) {
+    res.send({status:200, message:"ok"});
+})
+
+.post(function(req, res) {
+    res.send('Add an article');
+})
+.put(function(req, res) {
+    res.send('Update the article');
+});
+
+app.route('/time')
+.get(function(req,res){
+
+    res.send({status:200, message:<TIME/>})
+})
