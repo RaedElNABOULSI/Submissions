@@ -1,0 +1,25 @@
+{
+  "name": "codi-movie",
+  "version": "1.0.0",
+  "description": "Join cohort 05",
+  "main": "1",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1", 
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "challenges"
+  },
+  "keywords": [
+    "key"
+  ],
+  "author": "luther king",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
