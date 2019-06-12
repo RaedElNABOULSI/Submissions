@@ -112,6 +112,34 @@ app.get('/movies/read/by-title',function(req,res){
         return 0;})})
 })
 
+app.get('/movies/read/id/:tagId?',function(req,res)
+{
+    
+
+    if(req.params.tagId==1)
+    {
+        res.send({status:200, data:movies[0]})
+    }
+  
+    else if(req.params.tagId==2)
+    {
+        res.send({status:200, data:movies[1]})
+    }
+
+    else if(req.params.tagId==3)
+    {
+        res.send({status:200, data:movies[2]})
+    }
+
+    else if(req.params.tagId==4)
+    {
+        res.send({status:200, data:movies[3]})
+    }
+    else{
+        res.send({status:404,error:true, message:'the movie ' + req.params.tagId + ' does not exist'})
+    }
+
+})
 
 //----------------------------------------------------------------------------------------------------------------------
 
