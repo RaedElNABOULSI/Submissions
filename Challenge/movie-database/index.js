@@ -141,6 +141,43 @@ app.get('/movies/read/id/:tagId?',function(req,res)
 
 })
 
+//new movie
+app.get('/movies/add',function(req,res)
+{ const movies2 = [
+    { title: 'Jaws', year: 1975, rating: 8 },
+    { title: 'Avatar', year: 2009, rating: 7.8 },
+    { title: 'Brazil', year: 1985, rating: 8 },
+    { title: 'الإرهاب والكباب‎', year: 1992, rating: 6.2 }
+]
+    const title=req.query.title
+    const year=req.query.year
+    const rating=req.query.rating
+
+    var newmovie={title: title, year: year, rating: rating}
+    
+
+    //missing values
+if(!title || !year || year.length!==4 || isNaN(year))
+{
+    res.send({status:403, error:true, message:'you cannot create a movie without providing a title and a year'})
+}   
+
+else if(rating =="")
+{
+    newmovie={title: title, year: year, rating: '4'}
+    movies2.push(newmovie)
+res.send(movies2)
+}
+
+else{
+    movies2.push(newmovie)
+res.send(movies2)
+}
+
+})
+
+
+
 //----------------------------------------------------------------------------------------------------------------------
 
 
