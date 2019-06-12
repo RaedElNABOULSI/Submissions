@@ -80,11 +80,7 @@ else{
     
 })
 
-app.get('/movies/delete',function(req,res){
 
-
-    
-})
 
 
 
@@ -176,6 +172,35 @@ res.send(movies2)
 
 })
 
+app.get('/movies/delete/:tagId?',function(req,res)
+{
+    const moviesdelete = [
+        { title: 'Jaws', year: 1975, rating: 8 },
+        { title: 'Avatar', year: 2009, rating: 7.8 },
+        { title: 'Brazil', year: 1985, rating: 8 },
+        { title: 'الإرهاب والكباب‎', year: 1992, rating: 6.2 }
+    ]
+    if(req.params.tagId==1)
+{moviesdelete.shift()
+res.send(moviesdelete)
+}
+
+else if(req.params.tagId==2)
+{
+delete moviesdelete[1]
+}
+else if(req.params.tagId==3)
+{
+delete moviesdelete[2]
+}
+else if(req.params.tagId==4)
+{moviesdelete.pop()
+    res.send(moviesdelete)
+}
+    else{
+        res.send({status:404, error:true, message:'the movie <ID> does not exist'})
+    }
+})
 
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -183,7 +208,7 @@ res.send(movies2)
 
 // Change the 404 message modifing the middleware
 app.use(function(req, res, next) {
-    res.status(404).send("Error 404)");
+    res.status(404).send("Error 404");
 });
 
 // start the server in the port 3000 !
