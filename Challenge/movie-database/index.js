@@ -59,11 +59,8 @@ else{
         { title: 'الإرهاب والكباب‎', year: 1992, rating: 6.2 }
     ]
  
-  app.get('/movies/create',function(req,res){
+  
 
-
-
-  })
 
  app.get('/movies/read',function(req,res){
     
@@ -72,13 +69,6 @@ else{
 
 
     
-  
-
-  app.get('/movies/update',function(req,res){
-
-
-    
-})
 
 
 
@@ -137,14 +127,12 @@ app.get('/movies/read/id/:tagId?',function(req,res)
 
 })
 
+
+
+
 //new movie
 app.get('/movies/add',function(req,res)
-{ const movies2 = [
-    { title: 'Jaws', year: 1975, rating: 8 },
-    { title: 'Avatar', year: 2009, rating: 7.8 },
-    { title: 'Brazil', year: 1985, rating: 8 },
-    { title: 'الإرهاب والكباب‎', year: 1992, rating: 6.2 }
-]
+{ 
     const title=req.query.title
     const year=req.query.year
     const rating=req.query.rating
@@ -161,46 +149,59 @@ if(!title || !year || year.length!==4 || isNaN(year))
 else if(rating =="")
 {
     newmovie={title: title, year: year, rating: '4'}
-    movies2.push(newmovie)
-res.send(movies2)
+    movies.push(newmovie)
+res.send(movies)
 }
 
 else{
-    movies2.push(newmovie)
-res.send(movies2)
+    movies.push(newmovie)
+res.send(movies)
 }
 
 })
 
 app.get('/movies/delete/:tagId?',function(req,res)
 {
-    const moviesdelete = [
-        { title: 'Jaws', year: 1975, rating: 8 },
-        { title: 'Avatar', year: 2009, rating: 7.8 },
-        { title: 'Brazil', year: 1985, rating: 8 },
-        { title: 'الإرهاب والكباب‎', year: 1992, rating: 6.2 }
-    ]
+   
     if(req.params.tagId==1)
-{moviesdelete.shift()
-res.send(moviesdelete)
+{movies.shift()
+res.send(movies)
 }
 
 else if(req.params.tagId==2)
 {
-delete moviesdelete[1]
+delete movies[1]
 }
 else if(req.params.tagId==3)
 {
-delete moviesdelete[2]
+delete movies[2]
 }
 else if(req.params.tagId==4)
 {moviesdelete.pop()
-    res.send(moviesdelete)
+    res.send(movies)
 }
     else{
         res.send({status:404, error:true, message:'the movie <ID> does not exist'})
     }
 })
+
+
+app.get('/movies/update/:tagId',function(req,res){
+
+
+
+   if(req.params.tagId && req.query.rating){
+    
+    if(req.params.tagId<=movies.length && req.params.tagId>0)
+    {movies[req.params.tagId-1].title=req.params.tagId
+        movies[req.params.tagId-1].rating=req.query.rating
+       
+        
+        res.send({Updatedmovielist:movies})
+    }
+}
+})
+
 
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -212,9 +213,4 @@ app.use(function(req, res, next) {
 });
 
 // start the server in the port 3000 !
-app.listen(3000, function () {
-    console.log('Example app listening on port 3000.');
-});
-
-
-
+app.listen(3000, () => console.log('Gator app listening on port 3000!'));
