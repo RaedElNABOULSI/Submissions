@@ -68,11 +68,11 @@ else{
  app.get('/movies/read',function(req,res){
     
     res.send({status:200, data:movies })
-  });
+  })
 
 
     
-  //})
+  
 
   app.get('/movies/update',function(req,res){
 
@@ -86,6 +86,31 @@ app.get('/movies/delete',function(req,res){
     
 })
 
+
+
+ 
+app.get('/movies/read/by-date',function(req,res){
+
+
+    res.send({status:200, data:movies.sort(function(a, b){return a.year - b.year})})
+})
+
+app.get('/movies/read/by-rating',function(req,res){
+
+
+    res.send({status:200, data:movies.sort(function(a, b){return b.rating - a.rating})})
+})
+
+app.get('/movies/read/by-title',function(req,res){
+
+
+    res.send({status:200, data:movies.sort(function(a, b){
+        var x = a.title.toLowerCase();
+        var y = b.title.toLowerCase();
+        if (x < y) {return -1;}
+        if (x > y) {return 1;}
+        return 0;})})
+})
 
 
 //----------------------------------------------------------------------------------------------------------------------
