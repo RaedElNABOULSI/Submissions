@@ -6,6 +6,8 @@ var TIME = new Date()
 
 
 
+
+
 // on the request to root (localhost:3000/)
 app.get('/', function (req, res) {
     res.send('<b>ok</b> ');
@@ -29,11 +31,43 @@ app.get('/time', function (req,res) {
 });
 
 
+// get id from url
+
+app.get('/hello/:tagId?', function(req, res) {
+
+    res.send({status:200, message:"Hello",id: req.params.tagId})
+ 
+  });
+
+//step4 search
+
+  app.get('/search', function(req, res) {
+const s=req.query.s
+if(!s)
+{
+   res.send({status:200, message:"ok",data: s})
+}
+else{
+    res.send({status:500,error:true, message:"you have to provide a search"})
+}
+    
+ 
+  });
+
+ 
+  
+
+
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------
 
 
 // Change the 404 message modifing the middleware
 app.use(function(req, res, next) {
-    res.status(404).send("Sorry, that route doesn't exist. Have a nice day :)");
+    res.status(404).send("Error 404)");
 });
 
 // start the server in the port 3000 !
