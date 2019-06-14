@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.contacts
+{margin-top: 80px;
+    margin-left: 50px;
+    line-height: 300%;
+    flex-basis: 60%;
+}
+.contacts .contactbar
+{
+    list-style-type: none;
+    color: white
+}
+.message
+{
+    margin-right: 55px;
+    height: 100px;
+    width:150px;
+}
+.contact
+{
+   
+    text-align: center;
+    margin-top: 80px;
+   color: white;
+    flex-basis: 40%;
+}
+.submitbutton
+{color:white;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    width: 100px;
+    height: 50px;
+    background-color: #28A745;
+}
+.submitbutton:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+  }
+
+  h1{
+      color:red
+  }
+  h2{
+      color: green
+  }
+
+  .underhello{
+      display: flex;
+      flex-wrap: wrap;
+      
+  }
+
+  #wrappercontact{
+
+    background-image: url('./contact-us-background_625303.jpg');
+    background-repeat: no-repeat;
+
+background-size: cover;
+background-position: center;
+
+
+  }
+
+  body, html {
+    height: 100%;
+
+  }
+
+  nav
+{
+    position: absolute;
+  top: 4px;
+  right: 16px;
+}
+
+.menubar li{
+    display: inline;
+    
+    color: white;
+     
+}
+.menubar a{
+    text-decoration: none;
+}
+
+
+  
+
