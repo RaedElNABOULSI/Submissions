@@ -14,9 +14,11 @@ class Menu extends Component {
       <div>
 <nav class="menubar">
 <ul>
+
+
 <Link to="/" >  <li>Home |</li>  </Link>
 <Link to="/blog" >  <li>BLog |</li>  </Link>
-<Link to="/contact" >  <li>Contact</li>  </Link>
+<Link to="/contact" >  <li>Contact |</li>  </Link>
 
 </ul>
    </nav>

@@ -1,4 +1,4 @@
-import './home.css'
+import '../App.css'
 	
 import React, { Component } from 'react';
 class Title extends Component{
@@ -13,7 +13,7 @@ class Title extends Component{
 
 
 <div class="education">
-<h2>Education</h2>
+<h2 class="headertitle">Education</h2>
 <ul class="educationlist">
 <li><u>2013 - 2018</u>:<strong> BE in Communication & Electronics Engineering</strong> </li>
 <li><u>University</u>: <strong> &nbsp Beirut Arab University</strong></li>
@@ -23,7 +23,7 @@ class Title extends Component{
 
 <div class="certificates">
 
-<h2>Certificates</h2>
+<h2 class="headertitle">Certificates</h2>
 <ul class="certificateslist">
 
 <li>Complete Coding Course ( Backend and Frontend Development) and Project
@@ -37,7 +37,7 @@ class Title extends Component{
 </ul>
 </div>
 <div class="internships">
-<h2>Internships</h2>
+<h2 class="headertitle">Internships</h2>
 <dl class="internshipslist">
 <dt>
   <u>2019</u>:
@@ -56,7 +56,7 @@ class Title extends Component{
 </dl>
 </div>
 <div class="xperience">
-<h2>Work Experience</h2>
+<h2 class="headertitle">Work Experience</h2>
 
 <dl class="xperiencelist">
   <dt>
@@ -72,7 +72,7 @@ class Title extends Component{
 </div>
 
 <div class="skills">
-    <h2>Skills</h2>
+    <h2 class="headertitle">Skills</h2>
     <ul class="skillslist">
     <li>Digital analysis & problem solving</li>
     <li>Programming (SQL, Python, Html, Css,
@@ -97,7 +97,7 @@ class Title extends Component{
 
 
     <div class="pin">
-        <h2>Personal Interests</h2>
+        <h2 class="headertitle">Personal Interests</h2>
         
         <ul class="pinlist">
           <li>Sports</li>

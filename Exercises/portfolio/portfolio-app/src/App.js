@@ -5,7 +5,7 @@ import Title from './components/Title';
 import Blog from './components/Blog';
 import Contact from './components/Contact';
 import Menu from './components/Menu';
-
+import './App.css'
 
 class App extends Component {
   render() {
@@ -14,8 +14,8 @@ class App extends Component {
 <Menu/>
         <switch>
         <Route path="/" exact component={Title} />
-        <Route path="/blog" component={Blog}/>
-        <Route path="/contact" component={Contact} />
+        <Route path="/blog/" component={Blog}/>
+        <Route path="/contact/" component={Contact} />
         </switch>
       </div>
     )

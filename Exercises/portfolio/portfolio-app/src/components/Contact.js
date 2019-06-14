@@ -1,19 +1,21 @@
-import React, { Component } from 'react';
-import './contact.css'
+import '../App.css'
 
+import React, { Component } from 'react';
 class Contact extends Component {
   render() {
-    return(
+    return( 
       
- <div id="wrappercontact">
+ 
+ <div className="wrappercont">
 <h1>Don't be a stranger</h1>
 <h2>just say hello</h2>
 
 
 
-<div class="underhello">
-        <div class="contacts">
-                <ul class="contactbar">
+<div className="underhell">
+
+        <div className="contacts">
+                <ul className="contactbar">
                 <li>Address: Tripoli, Lebanon</li>
                 <li>Mobile : +96170514137</li>
                 <li>Email: raedelnaboulsi@gmail.com</li>
@@ -23,28 +25,28 @@ class Contact extends Component {
                 
                 </div>
                 
-                <div class="contact">
+                <div className="contactform">
                         <h2>Contact us </h2>
                         <br/>
                         <form>
-                            <label>Name: &nbsp &nbsp &nbsp &nbsp &nbsp</label>
-                            <input> </input>
+                            <label>Name: </label>
+                            <input/>
                         <br/>
                         <br/>
-                            <label>Email: &nbsp &nbsp &nbsp &nbsp &nbsp</label>
-                            <input></input> 
+                            <label>Email: </label>
+                            <input/> 
                         <br/>
                         <br/>
-                            <label>Message: &nbsp &nbsp &nbsp &nbsp &nbsp </label>
+                            <label className="message ">Message: </label>
                             <textarea class="message">Enter you message here... </textarea>
                         <br/>
                         <br/>
-                            <input type="radio" class="haha">&nbsp Complaint</input>
-                            &nbsp
-                            <input type="radio" class="haha">&nbsp Suggestions</input>
+                            Complaint<input type="radio" class="haha" value="&nbsp Complaint"/>
+                            
+                            Suggestions<input type="radio" class="haha" value="&nbsp Suggestions" />
                         <br/>
                         <br/>
-                        <button class="submitbutton">Submit</button>
+                        <button className="submitbutton">Submit</button>
                         </form>
                         
                         
@@ -55,9 +57,9 @@ class Contact extends Component {
 
 
 
-            </div>
+    </div>
             
-
+    
     )
   }
 }
