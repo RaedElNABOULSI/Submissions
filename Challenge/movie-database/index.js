@@ -2,13 +2,62 @@
 var express = require('express');
 var app = express();
 var TIME = new Date()
+const MarioChar=require('./test/models/mariochar')
+
+const mongoose=require('mongoose')
+
+const url = 'mongodb+srv://Ra2ed:codicodi@cluster0-dad4a.gcp.mongodb.net/test?retryWrites=true&w=majority';
+mongoose.Promise = global.Promise;
+mongoose.connect(url,{useNewUrlParser:true});
+// mongoose.connect('mongodb+srv://Ra2ed:codicodi@cluster0-dad4a.gcp.mongodb.net/test?retryWrites=true&w=majority')
+
+mongoose.connection.once('open',function()
+{
+    console.log('connection has been made')
+
+}).on('error',function(error)
+{
+    console.log('connection error',error)
+})
 
 
+//new movie
+movies_data=  new MarioChar(
+    [ { title: 'taken', year: 2005, rating: 5 },
+        { title: 'breakingbad', year: 2001, rating: 4 },
+        { title: 'broadchurch', year: 1998, rating: 8 }
+       ]
+)
 
 
 
 
 // on the request to root (localhost:3000/)
+
+
+app.get('/movies/read',function(req,res){
+    var User=MarioChar
+    
+
+
+    User.find({})
+     .then((data)=>{
+        res.send({status:200, data:data })
+      })
+     .catch((err)=>{
+       console.log(err)
+     })
+    
+    
+     
+     
+    }); 
+
+
+
+
+
+
 app.get('/', function (req, res) {
     res.send('<b>ok</b> ');
 });
@@ -62,10 +111,10 @@ else{
   
 
 
- app.get('/movies/read',function(req,res){
-    
-    res.send({status:200, data:movies })
-  })
+ 
+
+   
+  
 
 
     
@@ -133,10 +182,12 @@ app.get('/movies/read/id/:tagId?',function(req,res)
 //new movie
 app.get('/movies/add',function(req,res)
 { 
+    console.log("here")
     const title=req.query.title
     const year=req.query.year
     const rating=req.query.rating
-
+    
+    /* 
     var newmovie={title: title, year: year, rating: rating}
     
 
@@ -157,7 +208,7 @@ else{
     movies.push(newmovie)
 res.send(movies)
 }
-
+ */
 })
 
 app.get('/movies/delete/:tagId?',function(req,res)
@@ -193,12 +244,15 @@ app.get('/movies/update/:tagId',function(req,res){
    if(req.params.tagId && req.query.rating){
     
     if(req.params.tagId<=movies.length && req.params.tagId>0)
-    {movies[req.params.tagId-1].title=req.params.tagId
+    {movies[req.params.tagId-1].title=req.query.title
         movies[req.params.tagId-1].rating=req.query.rating
-       
+       if(req.query.year){
+        movies[req.params.tagId-1].year=req.query.year
+       }
         
-        res.send({Updatedmovielist:movies})
+        
     }
+    res.send({Updatedmovielist:movies})
 }
 })
 

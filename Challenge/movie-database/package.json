@@ -4,7 +4,7 @@
   "description": "Join cohort 05",
   "main": "1",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "dev": "nodemon index.js"
   },
   "repository": {
@@ -17,7 +17,10 @@
   "author": "luther king",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "debug-log": "^2.0.0",
+    "express": "^4.17.1",
+    "mocha": "^6.1.4",
+    "mongoose": "^5.5.15"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
