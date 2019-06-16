@@ -1,29 +1,25 @@
 
-const mongoose=require('mongoose')
+// var mongoose=require('mongoose')
 
-//connect to mongodb
-mongoose.connect('mongodb+srv://Ra2ed:<password>codicodi@cluster0-dad4a.gcp.mongodb.net/test?retryWrites=true&w=majority')
+// //connect to mongodb
+// database:'mongodb+srv://Ra2ed:<password>codicodi@cluster0-dad4a.gcp.mongodb.net/test?retryWrites=true&w=majority'
+// // mongoose.connect(database)
 
-mongoose.connection.once('open',function()
-{
-    console.log('connection has been made')
-
-}).on('error',function(error)
-{
-    console.log('connection error',error)
-})
+// // mongoose.connect(database).then(
+// //   ()=>{console.log("connected")},
+// //   err =>{console.log("err",err);}
+// // );
 
 
 
+// /*const mongoose = require('mongoose');
 
-/*const mongoose = require('mongoose');
-
-mongoose.connect('mongodb+srv://dbRaed:<password>@cluster0-yn38y.gcp.mongodb.net/test?retryWrites=true&w=majority', {
-    auth: {
-      user: '<dbRaed-username>',
-      password: '<dbRaed-password>'
-    }
-  })
-  .then(() => console.log('connection successful'))
-  .catch((err) => console.error(err));
-  */
+// mongoose.connect('mongodb+srv://dbRaed:<password>@cluster0-yn38y.gcp.mongodb.net/test?retryWrites=true&w=majority', {
+//     auth: {
+//       user: '<dbRaed-username>',
+//       password: '<dbRaed-password>'
+//     }
+//   })
+//   .then(() => console.log('connection successful'))
+//   .catch((err) => console.error(err));
+//   */
