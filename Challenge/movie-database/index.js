@@ -1,14 +1,15 @@
-// Require express and create an instance of it
 
 const express = require('express');
 const mongoose = require('mongoose');
 
 const app = express();
-
+const port = 3000;
 
 const url = 'mongodb+srv://Ra2ed:codicodi@cluster0-dad4a.gcp.mongodb.net/test?retryWrites=true&w=majority';
+
 mongoose.Promise = global.Promise;
-mongoose.connect(url,{useNewUrlParser: true});
+mongoose.connect(url,{ useNewUrlParser: true });
+
 const today = new Date(); 
 const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 const articleSchema = new mongoose.Schema({
@@ -29,231 +30,243 @@ const movies = [
     { title: 'الإرهاب والكباب‎', year: 1992, rating: 6.2 }
 ];
 
+app.get('/movies/create', (req, res) => {
+    
+    const Year = req.query.year;
+    const Rating = req.query.rating;
+    var ratingB;
+ 
+    if (Rating !== ""){
+     ratingB= Rating
+         }else{
+     ratingB= 4
+     }
+     if (req.query.title !== "" && Year.length === 4 && Year !== NaN  ){
+         var movie = new movieCollection({title: req.query.title, year: parseInt(Year), rating:parseInt(ratingB)});
+         movie.save().then((data)=> {
+            // console.log(data);
+            res.send({status:200, data: data })
+            })
+           .catch((err)=> {
+             console.log(err);
+             res.send({status:403, error:true, message:'you cannot create a movie without providing a title and a year'})
+           })
+        movies.push({title: req.query.title, year: parseInt(Year), rating:parseInt(ratingB)})
+         res.send({status:200, data: movies })
+         } else{
+         res.send({status:403, error:true, message:'you cannot create a movie without providing a title and a year'})} 
+ 
+
+     })
+
+app.get('/movies/add',function(req,res)
+{
+    const title=req.query.title
+    const year=req.query.year
+    const rating=req.query.rating
+
+    res.send({title:title,year:year,rating:rating})
+
+    
+})
+
+
+app.get('/', (req, res) => res.send('ok'))
+
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+
+app.get('/test', (req, res) => res.send({status:200, message:"ok"}))
+
+app.get('/time', (req, res) => res.send({status:200, message: time}))
+
+app.get('/hello/:ID?', (req, res) => { 
+    if (req.params.ID !== undefined){
+    res.send({status:200, message:"Hello, " +req.params.ID})
+}else {
+    res.send({status:200, message:"Hello" })
+}})
+
+app.get('/search', (req, res) => { 
+    if (req.query.s !== undefined && req.query.s !== "") {
+    res.send({status:200, message:"ok", data:req.query.s})
+}else {
+    res.send({status:500, error:true, message:"you have to provide a search"})
+}})
 
 
 
 
-// on the request to root (localhost:3000/)
 
 app.get('/movies/read', (req, res) => {
-    var User= movieCollection;
+    var User=movieCollection
     User.find({})
     .then((data)=>{
         res.send({status:200, data: data })
     })
     .catch((err)=>{
-    res.send(err);
+    console.log(err);
+    })
+
 })
+
+app.get('/movies/read/by-date', (req, res) => {
+    var User= movieCollection;
+    User.find({}).sort({year:1})
+    .then((data)=>{
+        res.send({status:200, data: data })
+     })
+    .catch((err)=>{
+      console.log(err);
+    })})
+
+// res.send({status:200, data: movies.sort((a, b) => (b.year - a.year))}))
+
+app.get('/movies/read/by-rating', (req, res) => {
+    var User= movieCollection;
+    User.find({}).sort({rating:-1})
+    .then((data)=>{
+        res.send({status:200, data: data })
+     })
+    .catch((err)=>{
+      console.log(err);
+    })})
+
+
+
+// res.send({status:200, data: movies.sort((a, b) => (b.rating - a.rating))}))
+
+app.get('/movies/read/by-title', (req, res) => {
+    var User= movieCollection;
+    User.find({}).sort({title:1})
+    .then((data)=>{
+        res.send({status:200, data: data })
+     })
+    .catch((err)=>{
+      console.log(err);
+    })
 })
 
+// res.send({status:200, data: movies.sort(function(a, b){
+//     const x = a.title.toLowerCase();
+//     const y = b.title.toLowerCase();
+//     if (x < y) {return -1;}
+//     if (x > y) {return 1;}
+//     return 0;
+// })}))
 
-
-
-
-
-app.get('/', function (req, res) {
-    res.send('<b>ok</b> ');
-});
-
-// On localhost:3000/welcome
-app.get('/welcome', function (req, res) {
-    res.send('<b>Hello</b> welcome to my http server made with express');
-});
-
-// // On localhost:3000/test
-// app.get('/test', function (req,res) {
-//     res.send({status:200, message:"ok"});
-// });
-
-
-// // On localhost:3000/time
-// app.get('/time', function (req,res) {
-//     res.send({status:200,
-//          message:today.getHours() + ":" + today.getSeconds()});
-// });
-
-
-// // get id from url
-
-// app.get('/hello/:tagId?', function(req, res) {
-
-//     res.send({status:200, message:"Hello",id: req.params.tagId})
- 
-//   });
-
-// //step4 search
-
-//   app.get('/search', function(req, res) {
-// const s=req.query.s
-// if(!s)
-// {
-//    res.send({status:200, message:"ok",data: s})
-// }
-// else{
-//     res.send({status:500,error:true, message:"you have to provide a search"})
-// }});
-//     //movies
-
-   
-  
-
-
- 
-
-   
-  
-
-
+app.get('/movies/read/id/:ID?', (req, res) => {
     
-
-
-
-
-
- 
-// app.get('/movies/read/by-date',function(req,res){
-
-
-//     res.send({status:200, data:movies.sort(function(a, b){return a.year - b.year})})
-// })
-
-// app.get('/movies/read/by-rating',function(req,res){
-
-
-//     res.send({status:200, data:movies.sort(function(a, b){return b.rating - a.rating})})
-// })
-
-// app.get('/movies/read/by-title',function(req,res){
-
-
-//     res.send({status:200, data:movies.sort(function(a, b){
-//         var x = a.title.toLowerCase();
-//         var y = b.title.toLowerCase();
-//         if (x < y) {return -1;}
-//         if (x > y) {return 1;}
-//         return 0;})})
-// })
-
-// app.get('/movies/read/id/:tagId?',function(req,res)
-// {
+    var User= movieCollection;
+    User.findById(req.params.ID)
+    .then((data)=>{
+        res.send({status:200, data: data })
+    })
+    .catch((err)=>{ 
+    console.log(err);
+    })
     
-
-//     if(req.params.tagId==1)
-//     {
-//         res.send({status:200, data:movies[0]})
-//     }
-  
-//     else if(req.params.tagId==2)
-//     {
-//         res.send({status:200, data:movies[1]})
-//     }
-
-//     else if(req.params.tagId==3)
-//     {
-//         res.send({status:200, data:movies[2]})
-//     }
-
-//     else if(req.params.tagId==4)
-//     {
-//         res.send({status:200, data:movies[3]})
-//     }
-//     else{
-//         res.send({status:404,error:true, message:'the movie ' + req.params.tagId + ' does not exist'})
-//     }
-
-// })
-
-
-
-
-// //new movie
-// // app.get('/movies/add',function(req,res)
-// // { 
-// //     console.log("here")
-// //     const title=req.query.title
-// //     const year=req.query.year
-// //     const rating=req.query.rating
+    // if (req.params.ID > movies.length-1){
+    //     res.send({status:404, error:true, message:'the movie <ID> does not exist'})
+    // }
+    // else if (req.params.ID !== undefined){
+    // res.send({status:200, data: movies[req.params.ID] })
+    // } else {
+    //     res.send("Please enter movie ID")
+    // }
+})
     
-// //     /* 
-// //     var newmovie={title: title, year: year, rating: rating}
-    
-
-// //     //missing values
-// // if(!title || !year || year.length!==4 || isNaN(year))
-// // {
-// //     res.send({status:403, error:true, message:'you cannot create a movie without providing a title and a year'})
-// // }   
-
-// // else if(rating =="")
-// // {
-// //     newmovie={title: title, year: year, rating: '4'}
-// //     movies.push(newmovie)
-// // res.send(movies)
-// // }
-
-// // else{
-// //     movies.push(newmovie)
-// // res.send(movies)
-// // }
-// //  */
-// // })
-
-// app.get('/movies/delete/:tagId?',function(req,res)
-// {
-   
-//     if(req.params.tagId==1)
-// {movies.shift()
-// res.send(movies)
-// }
-
-// else if(req.params.tagId==2)
-// {
-// delete movies[1]
-// }
-// else if(req.params.tagId==3)
-// {
-// delete movies[2]
-// }
-// else if(req.params.tagId==4)
-// {moviesdelete.pop()
-//     res.send(movies)
-// }
-//     else{
-//         res.send({status:404, error:true, message:'the movie <ID> does not exist'})
-//     }
-// })
-
-
-// app.get('/movies/update/:tagId',function(req,res){
-
-
-
-//    if(req.params.tagId && req.query.rating){
-    
-//     if(req.params.tagId<=movies.length && req.params.tagId>0)
-//     {movies[req.params.tagId-1].title=req.query.title
-//         movies[req.params.tagId-1].rating=req.query.rating
-//        if(req.query.year){
-//         movies[req.params.tagId-1].year=req.query.year
-//        }
+app.get('/movies/update/:ID?', (req, res) => {
+    var User = movieCollection;
+    if (mongoose.Types.ObjectId.isValid(req.params.ID)){
+    if(mongoose.Types.ObjectId.isValid(req.params.ID) && req.query.title) {
+        User.findByIdAndUpdate(req.params.ID,{$set:{title:req.query.title}},{multi:true, new:true})       
+        .then((docs)=>{
+           if(docs) {
+             
+            //resolve({success:true,data:docs});
+           } else {
+             reject({success:false,data:"no such user exist"});
+           }
+        }).catch((err)=>{
+            reject(err);
+        })
+        }
+        if(mongoose.Types.ObjectId.isValid(req.params.ID) && req.query.year) {
+            User.findByIdAndUpdate(req.params.ID,{$set:{year:req.query.year}},{multi:true, new:true})       
+            .then((data)=>{
+               if(data) {
+                 
+                //resolve({success:true,data:docs});
+               } else {
+                 reject({success:false,data:"no such user exist"});
+               }
+            }).catch((err)=>{
+                reject(err);
+            })}
+            if(mongoose.Types.ObjectId.isValid(req.params.ID) && req.query.rating) {
+                User.findByIdAndUpdate(req.params.ID,{$set:{rating:req.query.rating}},{multi:true, new:true})       
+                .then((data)=>{
+                   if(data) {
+                     
+                   // resolve({success:true,data:docs});
+                   } else {
+                     reject({success:false,data:"no such user exist"});
+                   }
+                }).catch((err)=>{
+                    reject(err);
+                })} 
+                if (mongoose.Types.ObjectId.isValid(req.params.ID)){
+                    var User= movieCollection;
+                User.find({})
+                .then((data)=>{
+                    res.send({status:200, data: data })
+                })
+                .catch((err)=>{
+                console.log(err);
+                })}
+                // else {
+        //   reject({success:"false",data:"provide correct key"});
+        // }
         
-        
+//     function updated(a, b){
+//         if (a !== undefined || a===""){
+//             movies[req.params.ID][b] = a
+            
+//         }
 //     }
-//     res.send({Updatedmovielist:movies})
+//     if (req.params.ID < movies.length){  
+//     updated(req.query.title,"title");
+//     updated(parseInt(req.query.rating),"rating");
+//     updated(parseInt(req.query.year),"year");
+//     res.send({status:200, data: movies })
 // }
-// })
 
+}
+else{
+    res.send({status:404, error:true, message:'the movie <ID> does not exist'})
+}})
 
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-// Change the 404 message modifing the middleware
-app.use(function(req, res, next) {
-    res.status(404).send("Error 404");
-});
-
-// start the server in the port 3000 !
-const port=3000
-
-app.listen(port,()=>console.log("Functioning on port 3000"))
+app.get('/movies/delete/:ID?', (req, res) => {
+    var User = movieCollection;
+    if(mongoose.Types.ObjectId.isValid(req.params.ID)) {
+        User.findOneAndRemove({_id: req.params.ID})
+          .then((docs)=>{
+             if(docs) {
+                resolve({"success":true,data:docs});
+             } else {
+                reject({"success":false,data:"no such user exist"});
+             }
+        }).catch((err)=>{
+            reject(err);
+        })
+      } else {
+          reject({"success":false,data:"please provide correct Id"});
+      }
+    
+    // if (req.params.ID !== undefined &&  req.params.ID < movies.length){
+    //     movies.splice(req.params.ID, 1)
+    //     res.send({status:200, data: movies })
+    // }else{
+    //     res.send({status:404, error:true, message:'the movie <ID> does not exist'})
+    // }
+})
