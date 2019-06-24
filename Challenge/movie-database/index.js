@@ -1,4 +1,3 @@
-
 const express = require('express');
 const mongoose = require('mongoose');
 
@@ -16,7 +15,7 @@ const articleSchema = new mongoose.Schema({
     title: String,
     rating: Number,
     year: Number
-    });
+});
  
 const movieCollection = mongoose.model("Ra2ed", articleSchema);
 
@@ -29,46 +28,6 @@ const movies = [
     { title: 'Brazil', year:    1985, rating: 8 },
     { title: 'الإرهاب والكباب‎', year: 1992, rating: 6.2 }
 ];
-
-app.get('/movies/create', (req, res) => {
-    
-    const Year = req.query.year;
-    const Rating = req.query.rating;
-    var ratingB;
- 
-    if (Rating !== ""){
-     ratingB= Rating
-         }else{
-     ratingB= 4
-     }
-     if (req.query.title !== "" && Year.length === 4 && Year !== NaN  ){
-         var movie = new movieCollection({title: req.query.title, year: parseInt(Year), rating:parseInt(ratingB)});
-         movie.save().then((data)=> {
-            // console.log(data);
-            res.send({status:200, data: data })
-            })
-           .catch((err)=> {
-             console.log(err);
-             res.send({status:403, error:true, message:'you cannot create a movie without providing a title and a year'})
-           })
-        movies.push({title: req.query.title, year: parseInt(Year), rating:parseInt(ratingB)})
-         res.send({status:200, data: movies })
-         } else{
-         res.send({status:403, error:true, message:'you cannot create a movie without providing a title and a year'})} 
- 
-
-     })
-
-app.get('/movies/add',function(req,res)
-{
-    const title=req.query.title
-    const year=req.query.year
-    const rating=req.query.rating
-
-    res.send({title:title,year:year,rating:rating})
-
-    
-})
 
 
 app.get('/', (req, res) => res.send('ok'))
@@ -95,19 +54,43 @@ app.get('/search', (req, res) => {
 
 
 
+app.get('/movies/create', (req, res) => {
+   const Year = req.query.year;
+   const Rating = req.query.rating;
+   var ratingB;
 
+   if (Rating !== ""){
+    ratingB= Rating
+        }else{
+    ratingB= 4
+    }
+    if (req.query.title !== "" && Year.length === 4 && Year !== NaN  ){
+        var movie = new movieCollection({title: req.query.title, year: parseInt(Year), rating:parseInt(ratingB)});
+        movie.save().then((data)=> {
+           // console.log(data);
+           res.send({status:200, data: data })
+           })
+          .catch((err)=> {
+            console.log(err);
+            res.send({status:403, error:true, message:'you cannot create a movie without providing a title and a year'})
+          })
+       // movies.push({title: req.query.title, year: parseInt(Year), rating:parseInt(ratingB)})
+        /* res.send({status:200, data: movies })
+        } else{
+        res.send({status:403, error:true, message:'you cannot create a movie without providing a title and a year'})} */
+
+        
+    }})
 
 app.get('/movies/read', (req, res) => {
-    var User=movieCollection
+    var User= movieCollection;
     User.find({})
     .then((data)=>{
         res.send({status:200, data: data })
     })
     .catch((err)=>{
     console.log(err);
-    })
-
-})
+    })})
 
 app.get('/movies/read/by-date', (req, res) => {
     var User= movieCollection;
